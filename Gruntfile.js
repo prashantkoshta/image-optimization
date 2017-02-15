@@ -34,16 +34,17 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/**/*.png']
         }
       },
       custom_options: {
         options: {
           separator: ': ',
-          punctuation: ' !!!'
+          punctuation: ' !!!',
+          allowedsize:'2MB'
         },
         files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/**/*.png']
         }
       }
     },
@@ -68,6 +69,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'image_optimization', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+ // grunt.registerTask('default', ['jshint', 'test']);
+ grunt.registerTask('default', ['image_optimization']);
 
 };
